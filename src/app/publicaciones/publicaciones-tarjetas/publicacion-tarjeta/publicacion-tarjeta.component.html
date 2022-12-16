@@ -1,0 +1,19 @@
+
+    <div class="card-sl">
+        <div [routerLink]="[ publicaciones?.id]" routerLinkActive="router-link-active" class=" cursor" >
+            <div class="card-image">
+                <img [src]="publicaciones?.imagen" />
+            </div>
+
+            <div class="card-heading">
+                {{publicaciones?.nombre}}
+            </div>
+            <!-- <div class="card-text">
+                    Personalizacion marvel estampa
+                </div> -->
+            <div class="card-text">
+                ${{publicaciones?.productoPersonalizado?.precio}}
+            </div>
+        </div>
+        <a class="card-button cursor" (click)="agregarAlCarrito(publicaciones?.id)"> Añadir al carrito</a>
+    </div>

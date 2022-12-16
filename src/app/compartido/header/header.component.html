@@ -1,0 +1,36 @@
+
+<header>
+    <div class="container flex" id="header1">
+      <div>
+          <img src="assets/imagenes/1.jpg" alt="logo" class="img-fluid" id="logo">
+      </div>
+      <div class="flex carrito-contenedor">
+          <div routerLink="clientes/login" class="cursor">
+              <i class="fa-solid fa-lg fa-user"></i>
+            </div>
+            <div [routerLink]="['carrito/', id]" routerLinkActive="router-link-active"  class="carrito cursor">
+                <i class="fa-solid fa-lg fa-cart-shopping"></i>
+                <div class="flex">
+                  <span>{{cantidadCarrito}}</span>
+                </div>
+            </div>
+      </div>
+    </div>
+    <div class="navbar-dark bg-dark">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+              <a class="nav-link" routerLink="publicaciones">Publicaciones <span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+          <div class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" (keyup.enter)="buscar( $event )" #txtBuscar aria-label="Search">
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>

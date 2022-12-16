@@ -1,1 +1,35 @@
-<p>carrito works!</p>
+<section class="my-3" style="background-color: #eee;">
+  <div class="container ">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-10">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h3 class="fw-normal mb-0 text-black">Carrito</h3>
+         
+        </div>
+
+        <div class="card rounded-3 mb-4 sombra" *ngFor="let itemProducto of carrito?.items">
+          <app-carrito-item [item]="itemProducto"></app-carrito-item>
+        </div>
+
+        
+        
+        <div class="card mb-4">
+          <div class="card-body p-4 d-flex justify-content-between">
+            <h2>Precio total:</h2>
+            <h2 class="ms-auto">${{carrito?.precioTotal}}</h2>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+                <button type="button" class="btn btn-filtro-activo btn-block btn-lg" routerLink="finalizar-compra" routerLinkActive="router-link-active" >Confirmar
+                  compra
+                </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>

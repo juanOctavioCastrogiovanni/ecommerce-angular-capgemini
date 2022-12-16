@@ -2,31 +2,35 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { MenuComponent } from './compartido/menu/menu.component';
-import { BusquedaComponent } from './compartido/busqueda/busqueda.component';
-import { CarritoIconoComponent } from './compartido/carrito-icono/carrito-icono.component';
-import { ProductosComponent } from './productos/productos.component';
-import { CarritosComponent } from './carritos/carritos.component';
-import { AuthComponent } from './auth/auth.component';
-import { ErrorPageComponent } from './error-page/error-page.component';
+
 import { AppRoutingModule } from './app-routing.module';
+
+import {MatBadgeModule} from '@angular/material/badge';
+import {MatIconModule} from '@angular/material/icon';
+import { CarritosModule } from './carritos/carritos.module';
+import { PublicacionesModule } from './publicaciones/publicaciones.module';
+import { AuthModule } from './auth/auth.module';
+import { CompartidoModule } from './compartido/compartido.module';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+
 
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    MenuComponent,
-    BusquedaComponent,
-    CarritoIconoComponent,
-    ProductosComponent,
-    CarritosComponent,
-    AuthComponent,
-    ErrorPageComponent
+    AppComponent
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatBadgeModule,
+    MatIconModule,
+    CarritosModule,
+    PublicacionesModule,
+    AuthModule,
+    CompartidoModule,
+    SweetAlert2Module
   ],
   providers: [],
   bootstrap: [AppComponent]

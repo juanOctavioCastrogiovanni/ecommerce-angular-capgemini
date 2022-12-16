@@ -1,0 +1,30 @@
+
+<div class="btn-group-vertical col-sm-6 col-md-12 my-3" role="group" aria-label="Vertical button group">
+    <h3>Categoria</h3>
+    <div *ngFor="let categoria of categorias" style="width: 100%;">
+        <button type="button" class=" sombras font-12 btn btn-filtro" *ngIf="categoria.nombre!=categoriaActual; else seleccionado" (click)="categoriaABuscar(categoria.nombre) ">{{categoria.nombre }}</button>
+    
+        <ng-template #seleccionado>
+            <button type="button" class=" sombras font-12 btn btn-filtro btn-filtro-activo" (click)="categoriaABuscar('')">{{categoriaActual}}</button>
+        </ng-template>
+    </div>
+
+</div>
+
+
+<div class="btn-group-vertical col-sm-6 col-md-12 my-3" role="group" aria-label="Vertical button group">
+    <h3>Tiendas</h3>
+    <div *ngFor="let tienda of tiendas" style="width: 100%;">
+        <button type="button" class=" sombras font-12 btn btn-filtro" *ngIf="!tiendaActual.includes(tienda.nombreTienda); else seleccionado" (click)="vendedorABuscar(tienda.nombreTienda) ">{{tienda.nombreTienda }}</button>
+    
+        <ng-template #seleccionado>
+            <button type="button" class=" sombras font-12 btn btn-filtro btn-filtro-activo" (click)="vendedorABuscar('') ">{{tienda.nombreTienda}}</button>
+        </ng-template>
+    </div>
+
+</div>
+
+<div class="btn-group-vertical col-sm-6 col-md-12 my-3" role="group" aria-label="Vertical button group" *ngIf="busquedaActual">
+    <h3>Busqueda actual</h3>
+        <button type="button" class=" sombras font-12 btn btn-filtro btn-filtro-activo" (click)="limpiarBusqueda() ">{{busquedaActual}} - eliminar</button>
+</div>
