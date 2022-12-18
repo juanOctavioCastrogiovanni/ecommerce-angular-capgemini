@@ -6,6 +6,8 @@ import { CarritoTarjetaComponent } from './carrito-tarjeta/carrito-tarjeta.compo
 import { CarritoItemComponent } from './carrito-item/carrito-item.component';
 import { CarritosComponent } from './carritos.component';
 import { RouterModule } from '@angular/router';
+import { ItemSubcarritoComponent } from './finalizar-compra/item-subcarrito/item-subcarrito.component';
+import { ItemPagoComponent } from './finalizar-compra/item-pago/item-pago.component';
 
 
 
@@ -14,9 +16,11 @@ import { RouterModule } from '@angular/router';
     declarations: [
     CarritoComponent,
     FinalizarCompraComponent,
+    ItemPagoComponent,
     CarritoTarjetaComponent,
     CarritoItemComponent,
-    CarritosComponent
+    CarritosComponent,
+    ItemSubcarritoComponent
   ],
     imports: [
         CommonModule,
@@ -24,6 +28,7 @@ import { RouterModule } from '@angular/router';
     ], 
     exports: [
       CarritosComponent,
+      FinalizarCompraComponent
     ]
     
 })

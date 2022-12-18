@@ -107,5 +107,13 @@ export interface Vendedor {
     email:             string;
     nombreTienda:      string;
     logo:              string;
-    tiposDePagos:      Categoria[];
+    tiposDePagos:      TiposDePago[];
+}
+
+export interface TiposDePago {
+    id: number,
+    fechaCreacion: Date,
+    fechaModificacion: Date,
+    fechaBaja: Date,
+    tipo: string
 }

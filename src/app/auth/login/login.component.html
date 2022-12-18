@@ -4,22 +4,22 @@
         
         <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 login-fondo my-4">
             <h1  class="text-center">Iniciar sesion</h1>
-          <form>
+          <form (submit)="iniciarSecision($event)">
                         <!-- Email input -->
             <div class="form-outline mb-4">
               <input type="email" id="form3Example3" class="form-control form-control-lg"
-                placeholder="" />
+                placeholder="" name="email" value="marceloluna@gmail.com"/>
               <label class="form-label" for="form3Example3">Email</label>
             </div>
   
             <!-- Password input -->
             <div class="form-outline mb-3">
               <input type="password" id="form3Example4" class="form-control form-control-lg"
-                placeholder="" />
+                placeholder="" name="contrasenia"  value="Camilo2020"/>
               <label class="form-label" for="form3Example4">Contraseña</label>
             </div>
             <div class="text-center text-lg-start mt-4 pt-2">
-              <button (click)="irA()" type="button" class="btn btn-light btn-lg"
+              <button  type="submit" class="btn btn-light btn-lg"
                 style="padding-left: 2.5rem; padding-right: 2.5rem;" >Entrar</button>
             </div>
   

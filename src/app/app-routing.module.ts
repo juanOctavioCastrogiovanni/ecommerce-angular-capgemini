@@ -4,7 +4,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { CarritoComponent } from './carritos/carrito/carrito.component';
 import { CarritosComponent } from './carritos/carritos.component';
 import { FinalizarCompraComponent } from './carritos/finalizar-compra/finalizar-compra.component';
-import { CompraFinalizadaComponent } from './compra/compra-finalizada/compra-finalizada.component';
+import { CompraFinalizadaComponent } from './compra/compra-finalizada.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { PublicacionComponent } from './publicaciones/publicacion/publicacion.component';
 import { PublicacionesComponent } from './publicaciones/publicaciones.component';

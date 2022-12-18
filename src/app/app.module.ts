@@ -12,6 +12,9 @@ import { PublicacionesModule } from './publicaciones/publicaciones.module';
 import { AuthModule } from './auth/auth.module';
 import { CompartidoModule } from './compartido/compartido.module';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { ItemPagoComponent } from './compra/item-pago/item-pago.component';
+import { CompraModule } from './compra/compra.module';
+
 
 
 
@@ -19,9 +22,9 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 @NgModule({
   declarations: [
     AppComponent
-    
   ],
   imports: [
+    CompraModule,
     BrowserModule,
     AppRoutingModule,
     MatBadgeModule,

@@ -1,0 +1,4 @@
+<div class="custom-control custom-radio">
+    <input [value]="pago?.id" name="pago" type="radio" [id]="pago?.tipo" class="custom-control-input" checked="" required="" (click)="efectivo($event)">
+    <label class="custom-control-label" [for]="pago?.tipo">{{pago?.tipo}}</label>
+</div>

@@ -16,6 +16,7 @@ export class CarritoService {
 
   setCantidadEnCarrito(numero: number){
     this.cantidadEnCarrito = numero;
+    this.cantidad.emit();
   }
 
   sumarCantidadEnCarrito(){

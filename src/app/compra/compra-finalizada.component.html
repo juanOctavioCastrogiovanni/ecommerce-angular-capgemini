@@ -3,12 +3,13 @@
   <div class="receipt">
   <div class="paper">
     <div class="title">Recibo de compra</div>
-    <div class="date">Date: 20/07/2013</div>    
+    <div class="date">Fecha: {{fecha }}</div>    
     <table>
       <tbody>
-        <tr><td>2 x Coffee</td><td class="right">$10</td></tr>
-         <tr><td>1 x Rice</td><td class="right">$30</td></tr>
-        <tr><td>5 x Milk</td><td class="right">$90</td></tr>
+         <tr *ngFor="let item of venta?.carrito?.items">
+          <td>{{item.cantidad}} x {{item?.publicacion?.nombre}}</td>
+          <td class="right">${{item?.subTotal}}</td>
+        </tr>
         <tr>
             <td colspan="2" class="center">
             </td>
@@ -16,9 +17,10 @@
     </tbody>
     </table>
     <div class="sign center">
+      <h1>Total: ${{venta?.carrito?.precioTotal}}</h1>
       <div class="barcode"></div>
       <br/>
-      0123456789
+      {{idTicket}}
       <br/>
       <div class="thankyou">
         Si su compra ha sido en efectivo, puede demorar hasta 48hs. Escanee el siguiente ticket en pago Facil o Rapipago para pagar su compra.

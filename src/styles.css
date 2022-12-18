@@ -307,8 +307,7 @@ footer{
 {
    background-color:#FAFAF9;
   padding-top:20px;
-    width:300px;
-  height:300px;
+width:300px;
   margin:-5px auto;
   border-radius:5px 5px 50px 50px;
   -moz-box-shadow: 0 10px 30px rgba(0,0,0,0.3);
@@ -359,7 +358,8 @@ table
 .center
 {
   text-align:center;
-  padding-top:20px;
+  padding-top:10px;
+  padding-bottom: 21px
 }
 input[type=button]
 {
@@ -398,10 +398,16 @@ text-align:center;
 .thankyou
 {
   line-height:14px;
-  font-size:10px;
+  font-size:14px;
   margin-top:5px;
   color:#5B5B5B;
   width:100%;
+}
+
+.nombreUsuario
+{
+    margin-right: 5px;
+
 }
 
 /* cards carritos */

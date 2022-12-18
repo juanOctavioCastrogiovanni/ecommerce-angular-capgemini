@@ -10,6 +10,7 @@ export class HeaderComponent implements OnInit ,AfterViewInit{
   
   cantidadCarrito:number = 0;
   id:string = '0';
+  usuario: string = '';
 
   @ViewChild('txtBuscar') txtBuscar!: ElementRef<HTMLInputElement>;
   
@@ -24,11 +25,16 @@ export class HeaderComponent implements OnInit ,AfterViewInit{
           this.id=localStorage.getItem("carrito")!;
        });
     }
+
+    if(localStorage.getItem("cliente")!=null){
+      this.usuario = JSON.parse(localStorage.getItem("cliente")!).nombre;
+    }
   }
 
   ngAfterViewInit(): void {
     this.carritoServicio.cantidad.subscribe(() => {
       this.cantidadCarrito = this.carritoServicio.getCantidadCarrito();
+      this.id=localStorage.getItem("carrito")!;
     });
   }
 
