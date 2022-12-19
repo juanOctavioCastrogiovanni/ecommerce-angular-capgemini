@@ -25,12 +25,10 @@ export class FiltrosComponent implements OnInit{
     
       this.publicacionServicio.buscarCategorias().subscribe( resp => {
         this.categorias = resp;
-        console.log(this.categorias);
       });
 
       this.publicacionServicio.buscarVendedores().subscribe( resp => {
         this.tiendas = resp;
-        console.log(this.tiendas);
       })
   }
 
@@ -38,6 +36,8 @@ export class FiltrosComponent implements OnInit{
     this.publicacionServicio.cambio.subscribe(() => {
       this.busquedaActual = this.publicacionServicio.getBusqueda()
     });
+
+    
   }
 
   categoriaABuscar(nombre: string | undefined){

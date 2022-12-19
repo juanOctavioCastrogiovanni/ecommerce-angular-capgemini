@@ -10,24 +10,34 @@ export class PublicacionesTarjetasComponent implements OnInit, AfterViewInit{
 
   publicacionesApi: PaginacionPublicacion | undefined;
   
+
+  busqueda: string | undefined ;
+
   constructor(private publicacionServicio: PublicacionesService) { 
     
   }
+  
+  
+  
+  ngOnInit(): void {
+    this.publicacionServicio.buscarPublicaciones().subscribe( resp => {
+      this.publicacionesApi = resp;
+    });
+    
+    this.busqueda = "";
+    
+  }
+
+
   ngAfterViewInit(): void {
     this.publicacionServicio.cambio.subscribe(() => {
       this.llamarApi();
+      this.busqueda = this.publicacionServicio.getBusqueda();
     });
     this.publicacionServicio.setBusqueda('')
   }
 
 
-  
-  ngOnInit(): void {
-      this.publicacionServicio.buscarPublicaciones().subscribe( resp => {
-          this.publicacionesApi = resp;
-          console.log(this.publicacionesApi);
-      });
-  }
 
   private llamarApi(){
     this.publicacionServicio.buscarPublicaciones().subscribe( resp => {

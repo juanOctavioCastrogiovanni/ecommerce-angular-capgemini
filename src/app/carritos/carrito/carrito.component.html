@@ -8,10 +8,18 @@
          
         </div>
 
-        <div class="card rounded-3 mb-4 sombra" *ngFor="let itemProducto of carrito?.items">
-          <app-carrito-item [item]="itemProducto"></app-carrito-item>
+        <div class="card rounded-3 mb-4 sombra" *ngIf="carrito?.items?.length! > 0; else seleccionado">
+          <app-carrito-item [item]="itemProducto" *ngFor="let itemProducto of carrito?.items"></app-carrito-item>
         </div>
-
+        <ng-template #seleccionado>
+          <div class="container">
+                  <div class="row" style="height: 300px; background-color: rgb(223, 223, 223);">
+                      <div class="col-12 d-flex justify-content-center alight-item-center">
+                          <h1 style="display:flex; align-items: center; color: rgb(189, 189, 189);" >El carrito se encuentra vacio</h1>
+                      </div>
+                  </div>
+          </div>
+      </ng-template>
         
         
         <div class="card mb-4">
@@ -21,7 +29,7 @@
           </div>
         </div>
 
-        <div class="card">
+        <div class="card" *ngIf="carrito?.items?.length! > 0">
           <div class="card-body">
                 <button type="button" class="btn btn-filtro-activo btn-block btn-lg" routerLink="finalizar-compra" routerLinkActive="router-link-active" >Confirmar
                   compra

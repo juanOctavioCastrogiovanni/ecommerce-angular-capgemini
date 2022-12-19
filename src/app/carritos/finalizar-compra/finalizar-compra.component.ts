@@ -42,11 +42,11 @@ export class FinalizarCompraComponent implements OnInit {
 
       
 
-      if(localStorage.getItem('idCliente') != null){
-        this.compraService.traerCliente(parseInt(localStorage.getItem('idCliente')!)).subscribe((cliente) => {
+      if(localStorage.getItem('clienteId') != null){
+        this.compraService.traerCliente(parseInt(localStorage.getItem('clienteId')!)).subscribe((cliente) => {
           this.cliente = cliente; 
         });
-        this.compraService.traerDireccion(parseInt(localStorage.getItem('idCliente')!)).subscribe((direccion) => {
+        this.compraService.traerDireccion(parseInt(localStorage.getItem('clienteId')!)).subscribe((direccion) => {
           this.direccion = direccion;
         });
       }

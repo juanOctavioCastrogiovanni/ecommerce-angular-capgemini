@@ -8,18 +8,23 @@ import { AuthService } from '../auth.service';
   templateUrl: './login.component.html',
 })
 export class LoginComponent {
+  error: string = "";
+
   constructor(private loginServicio: AuthService, private router: Router) { }
-  
+
+   
   iniciarSecision(evento:any){
     evento.preventDefault();
     console.log(evento.target[0].value,evento.target[1].value );
     this.loginServicio.iniciarSesion(evento.target[0].value, evento.target[1].value).subscribe(r=> {
       const id = JSON.stringify(r.id); 
-      const respuesta = JSON.stringify(r);
-      localStorage.setItem("cliente", respuesta);
+      const nombre = JSON.stringify(r.nombre);
       localStorage.setItem("clienteId", id);
-
+      localStorage.setItem("cliente", nombre);
+      this.loginServicio.cambiarColor("color: red");
       this.router.navigate(["/"]);
+    }, e => {
+      this.error = "Usuario o contraseña incorrectos";
     });    // this.router.navigate(["/"]);
   }
 }

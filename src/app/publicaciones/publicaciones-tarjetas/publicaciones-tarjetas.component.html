@@ -1,11 +1,21 @@
 
     <div class="">
         <h3><strong>Publicaciones</strong></h3>
-        <div class="container">
+        <h1 *ngIf="busqueda!=''">Hay {{publicacionesApi?.totalElements}} resultados para tu busqueda '{{busqueda}}'</h1>
+        <div class="container" *ngIf="publicacionesApi?.totalElements! > 0; else seleccionado">
                 <div class="row">
                     <app-publicacion-tarjeta *ngFor="let publicacion of publicacionesApi?.content;"  [publicaciones]="publicacion" class="col-sm-6 col-md-4 col-lg-3  my-4"> </app-publicacion-tarjeta>
-            </div>
+                </div>
         </div>
+        <ng-template #seleccionado>
+            <div class="container">
+                    <div class="row" style="height: 500px; background-color: rgb(235, 235, 235);">
+                        <div class="col-12 d-flex justify-content-center alight-item-center">
+                            <h1 style="display:flex; align-items: center; color: rgb(189, 189, 189);" >No hay publicaciones disponibles</h1>
+                        </div>
+                    </div>
+            </div>
+        </ng-template>
         <div class="btn-toolbar botones-paginacion "  role="toolbar" aria-label="Toolbar with button groups">
             <div class="btn-group mr-2" role="group" aria-label="First group">
               <button type="button" class="btn color-primario" (click)="cambiarPagina((publicacionesApi?.pageable?.pageNumber)!-1)" *ngIf="!publicacionesApi?.first"><</button>

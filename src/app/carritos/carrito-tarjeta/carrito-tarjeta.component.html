@@ -8,10 +8,10 @@
                                 <div id="DIV_4">
                                     <div id="DIV_5">
                                         <div id="DIV_6">
-                                            YOUR ORDER
+                                            Tu compra
                                         </div>
                                         <div id="DIV_7">
-                                            date
+                                            {{item?.fechaCreacion}}
                                         </div>
                                         <div id="DIV_8">
                                         </div>
@@ -28,9 +28,9 @@
                                                 <td colspan="3" id="TD_25">
                                                     <ul id="UL_26">
                                                         <li id="LI_27">
-                                                            <div class="d-flex justify-content-between">
-                                                                <span id="SPAN_28">100%-off Promotion</span>
-                                                                <span id="SPAN_29">US$29.99</span>
+                                                            <div class="d-flex justify-content-between" *ngFor="let itemCarrito of item?.carrito?.items">
+                                                                <span id="SPAN_28">{{itemCarrito?.publicacion?.nombre}} X{{itemCarrito?.cantidad}}</span>
+                                                                <span id="SPAN_29">${{itemCarrito?.subTotal}}</span>
                                                             </div>
                                                         </li>
                                                         
@@ -41,12 +41,12 @@
                                         <tfoot id="TFOOT_28">
                                             <tr id="TR_29">
                                                 <th id="TH_30">
-                                                    Total purchases
+                                                    Cargos extras
                                                 </th>
                                                 <td id="TD_31">
                                                 </td>
                                                 <td id="TD_32">
-                                                    US$29.99
+                                                0    
                                                 </td>
                                             </tr>
                                             
@@ -58,7 +58,7 @@
                                                     <span id="SPAN_49"></span>
                                                 </td>
                                                 <td id="TD_50">
-                                                    <span id="SPAN_51">US$0.00</span>
+                                                    <span id="SPAN_51">${{item?.carrito?.precioTotal}}</span>
                                                 </td>
                                             </tr>
                                         </tfoot>
