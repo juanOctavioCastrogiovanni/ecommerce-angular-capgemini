@@ -1,6 +1,6 @@
 
     <div class="card-sl">
-        <div [routerLink]="[ publicaciones?.id]" routerLinkActive="router-link-active" class=" cursor" >
+        <div [routerLink]="[ publicaciones?.id]" routerLinkActive="router-link-active" class=" cursor" style="background: white;">
             <div class="card-image">
                 <img src="../../../../assets/imagenes/{{publicaciones?.imagen}}" />
             </div>
@@ -17,7 +17,7 @@
             <!-- <div class="card-text">
                     Personalizacion marvel estampa
                 </div> -->
-            <div class="card-heading">
+            <div class="card-heading text-success">
                 ${{publicaciones?.productoPersonalizado?.precio}}
             </div>
             </div>
