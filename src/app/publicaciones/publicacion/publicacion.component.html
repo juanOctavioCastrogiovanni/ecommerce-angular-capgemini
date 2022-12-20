@@ -19,6 +19,9 @@
                         <li><i class="fa fa-check text-success"></i>Talle unico para niños</li>
                         <li><i class="fa fa-check text-success"></i><strong>Stock</strong> {{publicacionDetalle?.stock}}</li>
                         <li><i class="fa fa-check text-success"></i><strong>Categoria</strong> {{publicacionDetalle?.productoPersonalizado?.producto?.categoria?.nombre}}</li>
+                        <li><i class="fa fa-check text-success"></i><strong>Estado de la publicacion</strong> {{publicacionDetalle?.estado}}</li>
+                        <li><i class="fa fa-check text-success"></i><strong>Gestor</strong> {{publicacionDetalle?.productoPersonalizado?.producto?.gestor?.nombre}} {{publicacionDetalle?.productoPersonalizado?.producto?.gestor?.apellido}}</li>
+                        <li><i class="fa fa-check text-success"></i><strong>Tienda</strong> <img src="{{publicacionDetalle?.productoPersonalizado?.vendedor?.logo}}" width="80" style="margin: 10px;"/></li>
                     </ul>
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-12">
@@ -32,10 +35,10 @@
                                     <td>Tipo</td>
                                     <td>Contenido</td>
                                 </tr>
-                                <tr *ngFor="let item of publicacionDetalle?.productoPersonalizado?.personalizaciones">
-                                    <td>{{item.contenido}}</td>
-                                    <td>{{item.posiblePersonalizacion.area.nombre}}</td>
-                                    <td>{{item.posiblePersonalizacion.tipo.nombre}}</td>
+                                <tr *ngFor="let item of publicacionDetalle?.productoPersonalizado?.personalizaciones" style="font-size: 16px!important;">
+                                    <td><strong>{{item.contenido}}</strong></td>
+                                    <td><strong>{{item.posiblePersonalizacion.area}}</strong></td>
+                                    <td><strong>{{item.posiblePersonalizacion.tipo}}</strong></td>
                                 </tr>
                             
                             </tbody>

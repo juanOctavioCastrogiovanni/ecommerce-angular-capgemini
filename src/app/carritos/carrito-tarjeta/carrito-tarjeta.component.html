@@ -39,17 +39,6 @@
                                             </tr>
                                         </tbody>
                                         <tfoot id="TFOOT_28">
-                                            <tr id="TR_29">
-                                                <th id="TH_30">
-                                                    Cargos extras
-                                                </th>
-                                                <td id="TD_31">
-                                                </td>
-                                                <td id="TD_32">
-                                                0    
-                                                </td>
-                                            </tr>
-                                            
                                             <tr id="TR_45">
                                                 <th id="TH_46">
                                                     <span id="SPAN_47">Total</span>
@@ -58,9 +47,22 @@
                                                     <span id="SPAN_49"></span>
                                                 </td>
                                                 <td id="TD_50">
-                                                    <span id="SPAN_51">${{item?.carrito?.precioTotal}}</span>
+                                                    <span id="SPAN_51"><strong>${{item?.carrito?.precioTotal}}</strong></span>
                                                 </td>
                                             </tr>
+                                            
+                                            <tr id="TR_29">
+                                                <th id="TH_30">
+                                                    Tipo de pago
+                                                </th>
+                                                <td id="TD_31">
+                                                </td>
+                                                <td id="TD_32">
+                                                <strong>{{item?.pago?.tipo}}</strong>
+                                                </td>
+                                            </tr>
+                                            
+                                            
                                         </tfoot>
                                     </table>
                                 </div>

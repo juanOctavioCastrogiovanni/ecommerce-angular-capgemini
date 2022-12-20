@@ -5,14 +5,14 @@
           <img src="assets/imagenes/1.jpg" alt="logo" class="img-fluid" id="logo">
       </div>
       <div class="flex carrito-contenedor">
-          <div class="nombreUsuario" [routerLink]="['clientes', usuarioId, 'carritos']" routerLinkActive="router-link-active"  *ngIf="usuario!=''">
+          <div class="nombreUsuario cursor" [routerLink]="['clientes', usuarioId, 'carritos']" routerLinkActive="router-link-active"  *ngIf="usuario!=''"  style="padding-right: 10px;">
             <p><strong>{{usuario}}</strong></p>
           </div>
           <div routerLink="clientes/iniciar-sesion" class="cursor">
               <i class="fa-solid fa-lg fa-user" [style]="color" (click)="cerrarSesion()"></i>
           </div>
           
-            <div [routerLink]="['carrito/', id]" routerLinkActive="router-link-active"  class="carrito cursor">
+            <div [routerLink]="['carrito/', id]" routerLinkActive="router-link-active"  class="carrito cursor" style="padding-left: 10px;">
                 <i class="fa-solid fa-lg fa-cart-shopping"></i>
                 <div class="flex">
                   <span>{{cantidadCarrito}}</span>
