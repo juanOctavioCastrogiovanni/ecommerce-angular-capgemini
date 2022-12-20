@@ -10,7 +10,8 @@
                 </div>
                 <div class="col-lg-7 col-md-7 col-sm-6">
                     <h4 class="box-title mt-5"><strong>{{publicacionDetalle?.nombre}} - {{publicacionDetalle?.productoPersonalizado?.producto?.color}}</strong></h4>
-                    <h2 class="mt-5">
+                    <img src="{{publicacionDetalle?.productoPersonalizado?.vendedor?.logo}}" width="100" />
+                    <h2 class="mt-5 text-success">
                     ${{publicacionDetalle?.productoPersonalizado?.precio}}
                     </h2>
                     <button class="btn btn-primary btn-rounded" (click)="agregarAlCarrito(publicacionDetalle?.id)">Comprar</button>
@@ -21,7 +22,6 @@
                         <li><i class="fa fa-check text-success"></i><strong>Categoria</strong> {{publicacionDetalle?.productoPersonalizado?.producto?.categoria?.nombre}}</li>
                         <li><i class="fa fa-check text-success"></i><strong>Estado de la publicacion</strong> {{publicacionDetalle?.estado}}</li>
                         <li><i class="fa fa-check text-success"></i><strong>Gestor</strong> {{publicacionDetalle?.productoPersonalizado?.producto?.gestor?.nombre}} {{publicacionDetalle?.productoPersonalizado?.producto?.gestor?.apellido}}</li>
-                        <li><i class="fa fa-check text-success"></i><strong>Tienda</strong> <img src="{{publicacionDetalle?.productoPersonalizado?.vendedor?.logo}}" width="80" style="margin: 10px;"/></li>
                     </ul>
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-12">

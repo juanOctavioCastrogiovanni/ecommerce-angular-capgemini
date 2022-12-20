@@ -15,7 +15,6 @@ export class LoginComponent {
    
   iniciarSecision(evento:any){
     evento.preventDefault();
-    console.log(evento.target[0].value,evento.target[1].value );
     this.loginServicio.iniciarSesion(evento.target[0].value, evento.target[1].value).subscribe(r=> {
       const id = JSON.stringify(r.id); 
       const nombre = JSON.stringify(r.nombre);
@@ -24,7 +23,7 @@ export class LoginComponent {
       this.loginServicio.cambiarColor("color: red");
       this.router.navigate(["/"]);
     }, e => {
-      this.error = "Usuario o contraseña incorrectos";
+      this.error = e.error;
     });    // this.router.navigate(["/"]);
   }
 }

@@ -122,7 +122,6 @@ export class CarritoService {
       this.restarItemAlCarrito( carritoEncontrado, id!).subscribe(r=>{},e=> {
         if(e.status==200){
           this.restarCantidadEnCarrito();
-          console.log(e)
         }
       });
     }
@@ -135,7 +134,6 @@ export class CarritoService {
       this.eliminar(id!).subscribe(r=>{},e=> {
         if(e.status==200){
           this.restarProducto(cantidad);
-          console.log(e)
           
         }
       });

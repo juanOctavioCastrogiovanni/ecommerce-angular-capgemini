@@ -64,7 +64,7 @@ export class HeaderComponent implements OnInit ,AfterViewInit{
   private cargarColores(){
     if(localStorage.getItem("cliente")!=null){
       this.usuario = JSON.parse(localStorage.getItem("cliente")!);
-      this.usuarioId = JSON.parse(localStorage.getItem("cliente")!).id;
+      this.usuarioId = JSON.parse(localStorage.getItem("clienteId")!);
       this.color = "color: red";
     } else {
       this.color = "";

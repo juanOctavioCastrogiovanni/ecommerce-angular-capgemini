@@ -28,7 +28,6 @@ export class PublicacionesService {
     this.pagina = '0';
     this.vendedor = vendedor;
     this.cambio.emit();
-    console.log(this.vendedor);
     this.busqueda = '';
   }
   
@@ -59,7 +58,6 @@ export class PublicacionesService {
     const vendedor =(this.vendedor.length>0)? `seller=${this.vendedor}`: '';
     const busqueda =(this.busqueda.length>0)? `search=${this.busqueda}` :  '';
 
-    console.log(categoria,pagina,vendedor,busqueda)
     return this.http.get<PaginacionPublicacion>(`${this.apiUrl}/publicaciones`+`?${pagina}&${categoria}&${vendedor}&${busqueda}`);
   }
 

@@ -17,13 +17,10 @@ export class CompraFinalizadaComponent implements OnInit{
 
     this.idTicket = this.getRandomInt(1000000);
     
-    console.log("idVenta",localStorage.getItem('idVenta'));
 
     this.compraServicio.compraFinalizada(localStorage.getItem('idVenta')).subscribe(resp => {
-      console.log("respuesta",resp);
       this.venta = resp;
       this.fecha = resp?.fechaCreacion?.toString().split('T')[0];
-      // console.log(this.venta.carrito?.items?[0].publicacion?.nombre);
     });
   }
 

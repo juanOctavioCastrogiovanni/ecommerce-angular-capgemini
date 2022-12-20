@@ -18,7 +18,6 @@ export class CarritoComponent implements OnInit, AfterViewInit{
   ngAfterViewInit(): void {
     this.carritoServicio.cantidad.subscribe(() => {
       this.llamarApi();
-      console.log("te llamo")
     });
   }
 
@@ -30,7 +29,6 @@ export class CarritoComponent implements OnInit, AfterViewInit{
 
         this.carritoServicio.traerCarrito(id).subscribe( resp => {
             this.carrito = resp;
-            console.log(this.carrito);
         });
   }
 }

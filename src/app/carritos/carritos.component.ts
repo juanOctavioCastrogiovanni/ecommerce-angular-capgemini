@@ -16,7 +16,6 @@ export class CarritosComponent implements OnInit {
       const id = localStorage.getItem('clienteId')!;
       this.loginServicio.obtenerCarritos(id).subscribe(resp => {
         this.carritos = resp;
-        console.log(this.carritos);
       })
     }
   }

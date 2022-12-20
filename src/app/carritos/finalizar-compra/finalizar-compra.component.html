@@ -35,19 +35,20 @@
                     <div class="invalid-feedback"> Por favor escriba un mail valido. </div>
                 </div>
                 <hr class="mb-4" *ngIf="cliente">
-                <div class="custom-control custom-checkbox" *ngIf="cliente">
-                    <input type="checkbox" class="custom-control-input" id="cliente" name="cliente" [value]="cliente.id" (click)="deshabilitar($event)">
-                    <label class="custom-control-label" for="cliente">El pedido va a estar a mi nombre </label>
+                <div class="custom-control" *ngIf="cliente">
+                    <input type="hidden" name="cliente" id="cliente" [value]="cliente.id">
+                    <label>El pedido va a estar a mi nombre </label>
                     <div class="alert alert-success" role="alert" *ngIf="chequeoCliente">
                         Nombre completo: {{cliente.nombre}} {{cliente.apellido}} <br>
                         Email: {{cliente.email}}
+                        
                       </div>
                 </div>
                 <hr class="mb-4">
                 <h3 class="mb-3">Dirección de envio</h3>
                 <div class="mb-3"  *ngIf="!chequeoDireccion">
                     <label for="address">Calle</label>
-                    <input type="text" class="form-control" id="calle" name="calle"  required="" value="Andonaegui">
+                    <input type="text" class="form-control" id="calle" name="calle"  required="" value="Mosconi">
                     <div class="invalid-feedback"> Escriba la calle correctamente. </div>
                 </div>
                 <div class="row"  *ngIf="!chequeoDireccion">

@@ -23,7 +23,6 @@ export class PublicacionComponent {
 
         this.publicacionServicio.publicacionDetalle(id).subscribe( resp => {
             this.publicacionDetalle = resp;
-            console.log(this.publicacionDetalle);
         });
     }
 

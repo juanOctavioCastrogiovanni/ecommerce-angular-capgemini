@@ -42,13 +42,19 @@ export class FinalizarCompraComponent implements OnInit {
 
       
 
+      
+
       if(localStorage.getItem('clienteId') != null){
         this.compraService.traerCliente(parseInt(localStorage.getItem('clienteId')!)).subscribe((cliente) => {
           this.cliente = cliente; 
+          //Siempre en true si esta logueado 
+          this.chequeoCliente = true;
         });
         this.compraService.traerDireccion(parseInt(localStorage.getItem('clienteId')!)).subscribe((direccion) => {
           this.direccion = direccion;
         });
+      }{
+        this.chequeoCliente = false;
       }
 
     }
@@ -57,6 +63,7 @@ export class FinalizarCompraComponent implements OnInit {
       evento.target.checked? this.chequeoDireccion = true : this.chequeoDireccion = false;
     }
 
+    //Dehabilito la opcion, no funciona ya que la relacion es OneToOne
     deshabilitar(evento:any){
       evento.target.checked? this.chequeoCliente = true : this.chequeoCliente = false;
     }
@@ -70,9 +77,8 @@ export class FinalizarCompraComponent implements OnInit {
       datos.preventDefault();
      
       //  let idPago = datos.target.filter((element: any) => element.name == 'paymentMethod' && element.checked).value;
-      //  console.log(idPago)
 
-
+      console.log(datos.target[0].name,datos.target[0].value)
 
       let venta: CompraDTO={
         pagoId: null,
@@ -115,10 +121,7 @@ export class FinalizarCompraComponent implements OnInit {
             }
             break;
           case 'cliente':
-            if(datos.target[i].checked){
-              this.chequeoCliente = true;
               venta['clienteId'] = datos.target[i].value;
-            }
             break;
           case 'nombreCliente':
             venta['nombreCliente'] = datos.target[i].value;
@@ -152,6 +155,8 @@ export class FinalizarCompraComponent implements OnInit {
         
       }
 
+      console.log(venta)
+
       const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
           confirmButton: 'btn btn-success',
@@ -173,7 +178,6 @@ export class FinalizarCompraComponent implements OnInit {
           
           this.compraService.guardarCompra(venta,parseInt(localStorage.getItem('carrito')!)).subscribe(r => {},
             e=> {
-              console.log(e);
               if(e.status=201){
                 const idventa = e.error.text.split(" ")[5];
                 localStorage.setItem('idVenta', idventa);
