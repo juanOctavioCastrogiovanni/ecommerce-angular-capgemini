@@ -1,8 +1,8 @@
 export interface Venta {
     id?:                number;
     fechaCreacion?:     Date | null;
-    fechaModificacion?: null;
-    fechaBaja?:         null;
+    fechaModificacion?: Date | null;
+    fechaBaja?:         Date | null;
     direccion?:         Direccion;
     pago?:              Pago;
     carrito?:           Carrito;

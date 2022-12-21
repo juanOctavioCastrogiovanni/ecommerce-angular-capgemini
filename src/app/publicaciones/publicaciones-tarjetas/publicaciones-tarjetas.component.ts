@@ -2,6 +2,7 @@ import { Component, Input, OnInit, Output, EventEmitter, AfterViewInit } from '@
 import { PublicacionesService } from '../servicios/publicaciones.service';
 import { PaginacionPublicacion, Categoria } from '../Interfaces/publicacion.interface';
 
+
 @Component({
   selector: 'app-publicaciones-tarjetas',
   templateUrl: './publicaciones-tarjetas.component.html',
@@ -11,7 +12,7 @@ export class PublicacionesTarjetasComponent implements OnInit, AfterViewInit{
   publicacionesApi: PaginacionPublicacion | undefined;
   
 
-  busqueda: string | undefined ;
+  busqueda: string = '' ;
 
   constructor(private publicacionServicio: PublicacionesService) { 
     
@@ -25,7 +26,6 @@ export class PublicacionesTarjetasComponent implements OnInit, AfterViewInit{
     });
     
     this.busqueda = "";
-    
   }
 
 

@@ -8,10 +8,10 @@ import { PaginacionPublicacion, Publicacion, Categoria } from '../Interfaces/pub
   providedIn: 'root'
 })
 export class PublicacionesService {
-  private pagina: string = '';
-  private categoria: string = '';
-  private vendedor: string = '';
-  private busqueda: string = '';
+  pagina: string = '';
+  categoria: string = '';
+  vendedor: string = '';
+  busqueda: string = '';
 
   cambio: EventEmitter<string>= new EventEmitter<string>();
   
@@ -57,8 +57,9 @@ export class PublicacionesService {
     const pagina =(this.pagina.length>0) ?`page=${this.pagina}`: '';
     const vendedor =(this.vendedor.length>0)? `seller=${this.vendedor}`: '';
     const busqueda =(this.busqueda.length>0)? `search=${this.busqueda}` :  '';
-
+    
     return this.http.get<PaginacionPublicacion>(`${this.apiUrl}/publicaciones`+`?${pagina}&${categoria}&${vendedor}&${busqueda}`);
+
   }
 
   buscarCategorias(): Observable<Categoria[]> {
