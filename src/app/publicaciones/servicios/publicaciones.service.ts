@@ -41,7 +41,7 @@ export class PublicacionesService {
     return this.busqueda;
   }
 
-  private apiUrl = 'https://tp-capgemini-licuadora-production.up.railway.app';
+  private apiUrl = 'http://localhost:8088';
 
   constructor( private http: HttpClient) { }
 

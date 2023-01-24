@@ -14,7 +14,7 @@ export class AuthService {
   @Output() sesion :EventEmitter<string> = new EventEmitter();
 
   iniciarSesion(email: string, password: string): Observable<Cliente> {
-   return this.http.post<Cliente>('https://tp-capgemini-licuadora-production.up.railway.app/clientes/iniciar-sesion',{email,password});
+   return this.http.post<Cliente>('http://localhost:8088/clientes/iniciar-sesion',{email,password});
   }
 
   cambiarColor(color:string){
@@ -22,6 +22,6 @@ export class AuthService {
   }
 
   obtenerCarritos(id: string): Observable<Carrito[]> {
-    return this.http.get<Carrito[]>(`https://tp-capgemini-licuadora-production.up.railway.app/clientes/${id}/carritos`);
+    return this.http.get<Carrito[]>(`http://localhost:8088/clientes/${id}/carritos`);
   }
 }

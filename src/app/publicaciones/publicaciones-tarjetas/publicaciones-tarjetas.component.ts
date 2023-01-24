@@ -23,7 +23,7 @@ export class PublicacionesTarjetasComponent implements OnInit, AfterViewInit{
   
   
   ngOnInit(): void {
-    let urlModificada = 'https://tp-capgemini-licuadora-production.up.railway.app/publicaciones';
+    let urlModificada = 'http://localhost:8088/publicaciones';
     this.publicacionServicio.buscarPublicaciones(urlModificada).subscribe( resp => {
       this.publicacionesApi = resp;
       console.log(resp)
@@ -40,7 +40,7 @@ export class PublicacionesTarjetasComponent implements OnInit, AfterViewInit{
     })
 
     this.publicacionServicio.cambio.subscribe((params) => {
-      let urlModificada = 'https://tp-capgemini-licuadora-production.up.railway.app/publicaciones';
+      let urlModificada = 'http://localhost:8088/publicaciones';
       urlModificada = urlModificada.split('?')[0];
       console.log(urlModificada+params)
       this.llamarApi(urlModificada+params);

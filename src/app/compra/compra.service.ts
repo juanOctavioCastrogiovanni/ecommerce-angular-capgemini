@@ -14,18 +14,18 @@ export class CompraService {
   constructor(private http: HttpClient) { }
 
   traerDireccion(idCliente: number): Observable<Direccion>{
-    return this.http.get<Direccion>(`https://tp-capgemini-licuadora-production.up.railway.app/clientes/${idCliente}/direccion`);
+    return this.http.get<Direccion>(`http://localhost:8088/clientes/${idCliente}/direccion`);
   }
 
   traerCliente(idCliente: number): Observable<Cliente>{
-    return this.http.get<Cliente>(`https://tp-capgemini-licuadora-production.up.railway.app/clientes/${idCliente}`);
+    return this.http.get<Cliente>(`http://localhost:8088/clientes/${idCliente}`);
   }
 
   guardarCompra(venta: CompraDTO, carritoId:number|undefined): Observable<string>{
-    return this.http.post<string>(`https://tp-capgemini-licuadora-production.up.railway.app/carrito/${carritoId}/venta`, venta);
+    return this.http.post<string>(`http://localhost:8088/carrito/${carritoId}/venta`, venta);
   }
 
   compraFinalizada(id: any): Observable<Venta>{
-    return this.http.get<Venta>(`https://tp-capgemini-licuadora-production.up.railway.app/ventas/${id}`);
+    return this.http.get<Venta>(`http://localhost:8088/ventas/${id}`);
   }
 }
