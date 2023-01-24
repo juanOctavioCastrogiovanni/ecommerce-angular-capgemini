@@ -8,32 +8,39 @@ import { PaginacionPublicacion, Publicacion, Categoria } from '../Interfaces/pub
   providedIn: 'root'
 })
 export class PublicacionesService {
-  pagina: string = '';
-  categoria: string = '';
-  vendedor: string = '';
-  busqueda: string = '';
-  params: string = "";
+  private pagina: string = '';
+  private categoria: string = '';
+  private vendedor: string = '';
+  private busqueda: string = '';
 
   cambio: EventEmitter<string>= new EventEmitter<string>();
-  busquedaEvento: EventEmitter<string>= new EventEmitter<string>();
   
-  public getParams(){
-    return this.params;
-  }
   
-  public cambiarURL(params: string){
+  public setCategoria(categoria: string){
     this.pagina = '0';
-    // this.categoria = categoria!=''?`?category=${categoria}`:'';
-    this.params = params
-    this.cambio.emit(params);
+    this.categoria = categoria;
+    this.cambio.emit();
     this.busqueda = '';
   }
   
   
+  public setVendedor(vendedor: string){
+    this.pagina = '0';
+    this.vendedor = vendedor;
+    this.cambio.emit();
+    console.log(this.vendedor);
+    this.busqueda = '';
+  }
+  
+  public setPagina(pagina: string){
+    this.pagina = pagina;
+    this.busqueda = '';
+  }
+  
   public setBusqueda(busqueda: string){
     this.pagina = '0';
     this.busqueda = busqueda;
-    this.busquedaEvento.emit();
+    this.cambio.emit();
   }
 
   getBusqueda()
@@ -45,10 +52,15 @@ export class PublicacionesService {
 
   constructor( private http: HttpClient) { }
 
-  buscarPublicaciones(params: string): Observable<PaginacionPublicacion> {
+  buscarPublicaciones(): Observable<PaginacionPublicacion> {
+   
+    const categoria =(this.categoria.length>0)? `category=${this.categoria}` : '';
+    const pagina =(this.pagina.length>0) ?`page=${this.pagina}`: '';
+    const vendedor =(this.vendedor.length>0)? `seller=${this.vendedor}`: '';
+    const busqueda =(this.busqueda.length>0)? `search=${this.busqueda}` :  '';
 
-    return this.http.get<PaginacionPublicacion>(params);
-
+    console.log(categoria,pagina,vendedor,busqueda)
+    return this.http.get<PaginacionPublicacion>(`${this.apiUrl}/publicaciones`+`?${pagina}&${categoria}&${vendedor}&${busqueda}`);
   }
 
   buscarCategorias(): Observable<Categoria[]> {

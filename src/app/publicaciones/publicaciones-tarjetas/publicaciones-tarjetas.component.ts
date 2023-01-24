@@ -23,9 +23,12 @@ export class PublicacionesTarjetasComponent implements OnInit, AfterViewInit{
   
   
   ngOnInit(): void {
+    const carga : any= document.querySelector(".load");
+    carga.styles.display = "block";
     let urlModificada = window.location.href.replace('4200','8088');
     this.publicacionServicio.buscarPublicaciones(urlModificada).subscribe( resp => {
       this.publicacionesApi = resp;
+      carga.styles.display = "none";
       console.log(resp)
     });
   
@@ -44,6 +47,7 @@ export class PublicacionesTarjetasComponent implements OnInit, AfterViewInit{
       urlModificada = urlModificada.split('?')[0];
       console.log(urlModificada+params)
       this.llamarApi(urlModificada+params);
+
       
     });
     // this.publicacionServicio.setBusqueda('')
