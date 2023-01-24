@@ -24,9 +24,18 @@ export class PublicacionesTarjetasComponent implements OnInit, AfterViewInit{
   
   ngOnInit(): void {
     let urlModificada = 'http://localhost:8088/publicaciones';
+    
+    const load : any = document.querySelector('.load')
+    const body : any = document.querySelector('body')
+    body.style.opacity=".7"
+
     this.publicacionServicio.buscarPublicaciones(urlModificada).subscribe( resp => {
       this.publicacionesApi = resp;
-      console.log(resp)
+      console.log(resp);
+
+
+      load.style.display="none";
+      body.style.opacity="1";
     });
   
     
@@ -35,6 +44,10 @@ export class PublicacionesTarjetasComponent implements OnInit, AfterViewInit{
 
 
   ngAfterViewInit(): void {
+    const load : any = document.querySelector('.load')
+    const body : any = document.querySelector('body')
+    body.style.opacity=".7"
+
     this.publicacionServicio.busquedaEvento.subscribe(resp => {
       this.busqueda = this.publicacionServicio.getBusqueda();
     })
@@ -44,6 +57,10 @@ export class PublicacionesTarjetasComponent implements OnInit, AfterViewInit{
       urlModificada = urlModificada.split('?')[0];
       console.log(urlModificada+params)
       this.llamarApi(urlModificada+params);
+      
+      
+      load.style.display="none";
+      body.style.opacity="1";
       
     });
     // this.publicacionServicio.setBusqueda('')
