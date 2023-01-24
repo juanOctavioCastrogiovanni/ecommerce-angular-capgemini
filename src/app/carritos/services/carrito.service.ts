@@ -39,7 +39,7 @@ export class CarritoService {
     return this.cantidadEnCarrito;
   }
 
-  private url = 'http://localhost:8088/carrito';
+  private url = 'https://tp-capgemini-licuadora-production.up.railway.app/carrito';
 
 
   instaciarCarrito(): Observable<string> {

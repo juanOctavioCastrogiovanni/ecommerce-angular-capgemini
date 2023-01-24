@@ -1,6 +1,8 @@
 import { Component, Input, OnInit, Output, EventEmitter, AfterViewInit } from '@angular/core';
 import { PublicacionesService } from '../servicios/publicaciones.service';
 import { PaginacionPublicacion, Categoria } from '../Interfaces/publicacion.interface';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { filtrosVarios } from '../funciones/filtrosVarios';
 
 
 @Component({
@@ -14,42 +16,59 @@ export class PublicacionesTarjetasComponent implements OnInit, AfterViewInit{
 
   busqueda: string = '' ;
 
-  constructor(private publicacionServicio: PublicacionesService) { 
+  constructor(private publicacionServicio: PublicacionesService, private router: Router, private route: ActivatedRoute) { 
     
   }
   
   
   
   ngOnInit(): void {
-    this.publicacionServicio.buscarPublicaciones().subscribe( resp => {
+    let urlModificada = 'https://tp-capgemini-licuadora-production.up.railway.app/publicaciones';
+    this.publicacionServicio.buscarPublicaciones(urlModificada).subscribe( resp => {
       this.publicacionesApi = resp;
+      console.log(resp)
     });
+  
     
     this.busqueda = "";
   }
 
 
   ngAfterViewInit(): void {
-    this.publicacionServicio.cambio.subscribe(() => {
-      this.llamarApi();
+    this.publicacionServicio.busquedaEvento.subscribe(resp => {
       this.busqueda = this.publicacionServicio.getBusqueda();
+    })
+
+    this.publicacionServicio.cambio.subscribe((params) => {
+      let urlModificada = 'https://tp-capgemini-licuadora-production.up.railway.app/publicaciones';
+      urlModificada = urlModificada.split('?')[0];
+      console.log(urlModificada+params)
+      this.llamarApi(urlModificada+params);
+      
     });
-    this.publicacionServicio.setBusqueda('')
+    // this.publicacionServicio.setBusqueda('')
   }
 
 
 
-  private llamarApi(){
-    this.publicacionServicio.buscarPublicaciones().subscribe( resp => {
+  private llamarApi(urlModificada: string){
+    this.publicacionServicio.buscarPublicaciones(urlModificada).subscribe( resp => {
       this.publicacionesApi = resp; 
+      console.log(this.publicacionServicio.getParams())
     });      
   }
 
   cambiarPagina(pagina:number | undefined){
+    
     let pag = pagina!=undefined?pagina.toString(): '';
-    this.publicacionServicio.setPagina(pag);
+    let obj: Params= {}
+    let filtros : string[] = [] ;
+    let parametros : string = "";
 
-    this.llamarApi();
+    filtrosVarios(obj, filtros, parametros, pag, pag, "pagina", this.route, this.router, this.publicacionServicio);
+    // this.publicacionServicio.setPagina(pag);
+
+    // this.llamarApi();
   }
 
 

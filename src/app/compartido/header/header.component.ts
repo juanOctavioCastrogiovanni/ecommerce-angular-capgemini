@@ -2,7 +2,9 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angula
 import { PublicacionesService } from '../../publicaciones/servicios/publicaciones.service';
 import { CarritoService } from '../../carritos/services/carrito.service';
 import { AuthService } from '../../auth/auth.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Params } from 'src/app/publicaciones/Interfaces/params.interface';
+import { filtrosVarios } from 'src/app/publicaciones/funciones/filtrosVarios';
 
 @Component({
   selector: 'app-header',
@@ -18,7 +20,7 @@ export class HeaderComponent implements OnInit ,AfterViewInit{
 
   @ViewChild('txtBuscar') txtBuscar!: ElementRef<HTMLInputElement>;
   
-  constructor(private publicacionesServicio:PublicacionesService,private loginServicio: AuthService,private carritoServicio:CarritoService, private router: Router) { }
+  constructor(private publicacionesServicio:PublicacionesService,private loginServicio: AuthService,private carritoServicio:CarritoService, private router: Router, private route: ActivatedRoute) { }
 
 
   ngOnInit(): void {
@@ -56,6 +58,14 @@ export class HeaderComponent implements OnInit ,AfterViewInit{
   buscar(evento:any){
     evento.preventDefault();
     const valor = this.txtBuscar.nativeElement.value;
+
+    let obj: Params= {}
+    let filtros : string[] = [] ;
+    let parametros : string = "";
+
+    filtrosVarios(obj, filtros, parametros, valor, valor, "busqueda", this.route, this.router, this.publicacionesServicio);
+
+
     this.publicacionesServicio.setBusqueda(valor);
   }
 

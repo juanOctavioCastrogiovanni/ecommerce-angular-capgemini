@@ -1,6 +1,9 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Categoria } from '../Interfaces/publicacion.interface';
+import {filtrosVarios} from '../funciones/filtrosVarios';
+
 import { PublicacionesService } from '../servicios/publicaciones.service';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-filtros',
@@ -19,7 +22,7 @@ export class FiltrosComponent implements OnInit{
   busquedaActual: string | undefined = undefined;
 
 
-  constructor(private publicacionServicio:PublicacionesService) { }
+  constructor(private publicacionServicio:PublicacionesService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     
@@ -33,7 +36,7 @@ export class FiltrosComponent implements OnInit{
   }
 
   ngAfterViewInit(): void {
-    this.publicacionServicio.cambio.subscribe(() => {
+    this.publicacionServicio.busquedaEvento.subscribe(() => {
       this.busquedaActual = this.publicacionServicio.getBusqueda()
     });
 
@@ -41,24 +44,45 @@ export class FiltrosComponent implements OnInit{
   }
 
   categoriaABuscar(nombre: string | undefined){
-    let busqueda = nombre!=undefined?nombre:''
+    let busqueda = nombre!=undefined?nombre.replace(' ','-'):''
+    let obj: Params= {}
+    let filtros : string[] = [] ;
+    let parametros : string = "";
+    
+    filtrosVarios(obj, filtros, parametros, nombre, busqueda, "categoria", this.route, this.router, this.publicacionServicio);
+
     if(nombre != undefined){
-      busqueda = busqueda.replace(' ','-');
-      this.publicacionServicio.setCategoria(busqueda);
       this.categoriaActual = nombre;
     }
+
+    this.publicacionServicio.setBusqueda('');
   }
   
   vendedorABuscar(nombre: string | undefined){
-    let busqueda = nombre!=undefined?nombre:''
-    if(nombre != undefined){
-      busqueda = busqueda.split(' ')[0];
-      this.publicacionServicio.setVendedor(busqueda);
-      this.tiendaActual = nombre;
-    }
+    let busqueda = nombre!=undefined?nombre.split(' ')[0]:''
+    let obj: Params= {}
+    let filtros : string[] = [] ;
+    let parametros : string = "";
+
+    filtrosVarios(obj, filtros, parametros, nombre, busqueda, "vendedor", this.route, this.router, this.publicacionServicio);
+
+    this.tiendaActual = nombre?nombre:'';
+    this.publicacionServicio.setBusqueda('');
   }
 
   limpiarBusqueda(){
+
+    this.router.navigate(
+      ['/publicaciones']
+    );
+
+    this.publicacionServicio.cambiarURL("?page=0")
     this.publicacionServicio.setBusqueda('');
+
+    
   }
+
+ 
+
+
 }
