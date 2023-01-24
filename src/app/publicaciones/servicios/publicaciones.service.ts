@@ -60,6 +60,6 @@ export class PublicacionesService {
   }
 
   publicacionDetalle(id: string): Observable<Publicacion> {
-    return this.http.get<Publicacion>(`${this.apiUrl}/publicaciones/${id}`);
+    return this.http.get<Publicacion>(`${this.apiUrl}/publicaciones/${id} `);
   }
 }
