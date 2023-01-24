@@ -23,9 +23,12 @@ export class PublicacionesTarjetasComponent implements OnInit, AfterViewInit{
   
   
   ngOnInit(): void {
-    let urlModificada = 'https://tp-capgemini-licuadora-production.up.railway.app/publicaciones';
+    const carga : any= document.querySelector(".load");
+    carga.styles.display = "block";
+    let urlModificada = window.location.href.replace('4200','8088');
     this.publicacionServicio.buscarPublicaciones(urlModificada).subscribe( resp => {
       this.publicacionesApi = resp;
+      carga.styles.display = "none";
       console.log(resp)
     });
   
@@ -40,10 +43,11 @@ export class PublicacionesTarjetasComponent implements OnInit, AfterViewInit{
     })
 
     this.publicacionServicio.cambio.subscribe((params) => {
-      let urlModificada = 'https://tp-capgemini-licuadora-production.up.railway.app/publicaciones';
+      let urlModificada = window.location.href.replace('4200','8088');
       urlModificada = urlModificada.split('?')[0];
       console.log(urlModificada+params)
       this.llamarApi(urlModificada+params);
+
       
     });
     // this.publicacionServicio.setBusqueda('')
