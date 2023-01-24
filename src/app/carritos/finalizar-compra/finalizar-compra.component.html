@@ -20,18 +20,18 @@
                 <div class="row"  *ngIf="!chequeoCliente">
                     <div class="col-md-6 mb-3" >
                         <label for="firstName">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" name="nombreCliente" placeholder=""  required="" value="Juan Octavio">
+                        <input type="text" class="form-control" id="nombre" name="nombreCliente" placeholder=""  required="" >
                         <div class="invalid-feedback"> Este campo es obligatorio. </div>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="lastName">Apellido</label>
-                        <input type="text" class="form-control" id="apellido" name="apellidoCliente" placeholder=""required="" value="Castrogiovanni">
+                        <input type="text" class="form-control" id="apellido" name="apellidoCliente" placeholder=""required="" >
                         <div class="invalid-feedback"> Este campo es obligatorio. </div>
                     </div>
                 </div>
                 <div class="mb-3" *ngIf="!chequeoCliente">
                     <label for="email">Email </label>
-                    <input type="email" class="form-control" id="email" name="emailCliente"  value="jcastrogiovanni@frba.utn.com.ar">
+                    <input type="email" class="form-control" id="email" name="emailCliente"  >
                     <div class="invalid-feedback"> Por favor escriba un mail valido. </div>
                 </div>
                 <hr class="mb-4" *ngIf="cliente">
@@ -48,13 +48,13 @@
                 <h3 class="mb-3">Dirección de envio</h3>
                 <div class="mb-3"  *ngIf="!chequeoDireccion">
                     <label for="address">Calle</label>
-                    <input type="text" class="form-control" id="calle" name="calle"  required="" value="Mosconi">
+                    <input type="text" class="form-control" id="calle" name="calle"  required="" >
                     <div class="invalid-feedback"> Escriba la calle correctamente. </div>
                 </div>
                 <div class="row"  *ngIf="!chequeoDireccion">
                     <div class="col-md-4 mb-3">
                         <label for="zip">Altura</label>
-                        <input type="text" class="form-control" id="zip"   name="altura" placeholder="" carequired=""  value="2349">
+                        <input type="text" class="form-control" id="zip"   name="altura" placeholder="" carequired="" >
                         <div class="invalid-feedback"> Altura es requerida. </div>
                     </div>
                     <div class="col-md-4 mb-3">
@@ -68,12 +68,12 @@
                 </div>
                 <div class="mb-3"  *ngIf="!chequeoDireccion">
                     <label for="address">Localidad</label>
-                    <input type="text" class="form-control" id="localidad"   name="localidad"  required=""  value="Villa Urquiza">
+                    <input type="text" class="form-control" id="localidad"   name="localidad"  required="" >
                     <div class="invalid-feedback"> Escriba la localidad correctamente. </div>
                 </div>
                 <div class="mb-3"  *ngIf="!chequeoDireccion">
                     <label for="address">Provicia</label>
-                    <input type="text" class="form-control" id="provincia"   name="provincia" required="" value="CABA">
+                    <input type="text" class="form-control" id="provincia"   name="provincia" required="" >
                     <div class="invalid-feedback"> Escriba la provincia correctamente. </div>
                 </div>
                 <hr class="mb-4" *ngIf="direccion">
@@ -96,25 +96,25 @@
                 <div class="row" *ngIf="!chequeoEfectivo">
                     <div class="col-md-6 mb-3">
                         <label for="cc-name">Nombre de la tarjeta</label>
-                        <input type="text" class="form-control" id="cc-name" placeholder="" required=""  value="Juan Castrogiovanni">
+                        <input type="text" class="form-control" id="cc-name" placeholder="" required=""  >
                         <small class="text-muted">El mismo que figura en el dorso de la misma</small>
                         <div class="invalid-feedback"> El nombre es requerido</div>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="cc-number">Numero de la tarjeta</label>
-                        <input type="text" class="form-control" id="cc-number" placeholder="" required=""  value="45987895636525489658">
+                        <input type="text" class="form-control" id="cc-number" placeholder="" required=""  >
                         <div class="invalid-feedback"> El numero es requerido </div>
                     </div>
                 </div>
                 <div class="row" *ngIf="!chequeoEfectivo">
                     <div class="col-md-4 mb-3">
                         <label for="cc-expiration">Fecha de vencimiento  </label><span>(MM/AA)</span>
-                        <input type="text" class="form-control" id="cc-expiration" placeholder="" required=""  value="06/25">
+                        <input type="text" class="form-control" id="cc-expiration" placeholder="" required="" >
                         <div class="invalid-feedback"> Fecha recomendada </div>
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="cc-cvv">CVV</label>
-                        <input type="password" class="form-control" id="cc-cvv" placeholder="" required="" value="347">
+                        <input type="password" class="form-control" id="cc-cvv" placeholder="" required="" >
                         <div class="invalid-feedback"> Codigo obligatorio </div>
                     </div>
                 </div>
