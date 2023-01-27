@@ -1,12 +1,31 @@
 
+    <!-- Este componente renderiza el div de las tarjetas de las publicaciones  -->
+    <!-- This component renders the div of the cards of the publications -->
     <div class="">
         <h3><strong>Publicaciones</strong></h3>
+        <!-- Si hay una busqueda da el total de resultados -->
+        <!-- If there is a search it gives the total results -->
         <h1 *ngIf="busqueda!=''">Hay {{publicacionesApi?.totalElements}} resultados para tu busqueda '{{busqueda}}'</h1>
         <div class="container" *ngIf="publicacionesApi?.totalElements! > 0; else seleccionado">
                 <div class="row">
+                    <!-- Renderiza las tarjetas de las publicaciones (publicacion-tarjeta.component.html)-->
+                    <!-- Render the cards of the publications (publicacion-tarjeta.component.html) -->
+
+                    <!-- Recorro todo el array de content y por cada instancia la llamo publicacion -->
+                    <!-- I go through the whole array of content and for each instance I call it publication -->
+                    
+                    <!-- a esa instancia publicacion dentro del componente publicacion-tarjeta se le va llamar publicaciones -->
+                    <!-- to that instance publication inside the publicacion-tarjeta component it will be called publications -->
+
+                    <!-- Para esto se usa el decorador @Input() publicaciones: Publicacion; en el componente publicacion-tarjeta.component.ts -->
+                    <!-- For this the @Input() publicaciones: Publicacion; decorator is used in the publicacion-tarjeta.component.ts component -->
+
                     <app-publicacion-tarjeta *ngFor="let publicacion of publicacionesApi?.content;"  [publicaciones]="publicacion" class="col-sm-6 col-md-4 col-lg-3  my-4"> </app-publicacion-tarjeta>
                 </div>
         </div>
+        <!-- Si no hay publicaciones disponibles en el arreglo TotalElements -->
+        <!-- If there are no publications available in the TotalElements array -->
+
         <ng-template #seleccionado>
             <div class="container">
                     <div class="row" style="height: 500px; background-color: rgb(235, 235, 235);">
@@ -18,8 +37,14 @@
         </ng-template>
         <div class="btn-toolbar botones-paginacion "  role="toolbar" aria-label="Toolbar with button groups">
             <div class="btn-group mr-2" role="group" aria-label="First group">
+                <!-- Ejecuta el metodo del componente que cambia la pagina, si es la primera desaparece -->
+                <!-- Executes the component method that changes the page, if it is the first it disappears -->
+
               <button type="button" class="btn color-primario" (click)="cambiarPagina((publicacionesApi?.pageable?.pageNumber)!-1)" *ngIf="!publicacionesApi?.first"><</button>
               <button type="button" class="btn color-primario">{{(publicacionesApi?.pageable?.pageNumber)! + 1}}</button>
+              <!-- Ejecuta el metodo del componente que cambia la pagina, si es la ultima desaparece -->
+                <!-- Executes the component method that changes the page, if it is the last it disappears -->
+
               <button  type="button" class="btn color-primario" (click)="cambiarPagina((publicacionesApi?.pageable?.pageNumber)!+1)" 
                       *ngIf="!publicacionesApi?.last">></button>
                     </div>

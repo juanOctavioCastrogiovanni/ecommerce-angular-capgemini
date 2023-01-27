@@ -1,3 +1,5 @@
+<!-- Renderiza la vista del formulario antes de finalizar la compra -->
+<!-- Renders the view of the form before finalizing the purchase -->
 <div class="container my-5">
     <div class="row">
         <div class="col-md-4 order-md-2 mb-4">
@@ -16,27 +18,37 @@
         <div class="col-md-8 order-md-1">
             <h3 class="mb-3">¡Complete datos de contacto para la compra!</h3>
 
+            <!-- Formulario del cliente -->
+            <!-- Client form -->
             <form class="needs-validation" (submit)="guardar($event)">
+                <!-- Si no existe el cliente, entonces necesito que el cliente
+                complete los datos para realizar la compra sin estar logueado -->
+
+                <!-- If the client does not exist, then I need the client
+                complete the data to make the purchase without being logged in -->
                 <div class="row"  *ngIf="!chequeoCliente">
                     <div class="col-md-6 mb-3" >
                         <label for="firstName">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" name="nombreCliente" placeholder=""  required="" value="Juan Octavio">
+                        <input type="text" class="form-control" id="nombre" name="nombreCliente" placeholder=""  required="" >
                         <div class="invalid-feedback"> Este campo es obligatorio. </div>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="lastName">Apellido</label>
-                        <input type="text" class="form-control" id="apellido" name="apellidoCliente" placeholder=""required="" value="Castrogiovanni">
+                        <input type="text" class="form-control" id="apellido" name="apellidoCliente" placeholder=""required="" >
                         <div class="invalid-feedback"> Este campo es obligatorio. </div>
                     </div>
                 </div>
                 <div class="mb-3" *ngIf="!chequeoCliente">
                     <label for="email">Email </label>
-                    <input type="email" class="form-control" id="email" name="emailCliente"  value="jcastrogiovanni@frba.utn.com.ar">
+                    <input type="email" class="form-control" id="email" name="emailCliente"  >
                     <div class="invalid-feedback"> Por favor escriba un mail valido. </div>
                 </div>
+                
+                <!-- Si esta logueado entonces muestro el nombre y el mail del cliente -->
+                <!-- If logged in then I show the name and the mail of the client -->
                 <hr class="mb-4" *ngIf="cliente">
                 <div class="custom-control" *ngIf="cliente">
-                    <input type="hidden" name="cliente" id="cliente" [value]="cliente.id">
+                    <input type="hidden" name="clienteId" id="cliente" [value]="cliente.id">
                     <label>El pedido va a estar a mi nombre </label>
                     <div class="alert alert-success" role="alert" *ngIf="chequeoCliente">
                         Nombre completo: {{cliente.nombre}} {{cliente.apellido}} <br>
@@ -44,17 +56,29 @@
                         
                       </div>
                 </div>
+
+                <!-- La direccion de envio es distinta, porque puede que el cliente
+                quiera asignar otra direccion para el envio (para la compra) 
+                y difiera con la que guardo en su perfil  -->
+
+                <!-- The shipping address is different, because the client may
+                want to assign another address for the shipment (for the purchase)
+                and differs from the one saved in his profile -->
+
                 <hr class="mb-4">
                 <h3 class="mb-3">Dirección de envio</h3>
+                <!-- Si esta registrado y desea agregar una nueva entonces -->
+                <!-- If registered and wants to add a new one then -->
+
                 <div class="mb-3"  *ngIf="!chequeoDireccion">
                     <label for="address">Calle</label>
-                    <input type="text" class="form-control" id="calle" name="calle"  required="" value="Mosconi">
+                    <input type="text" class="form-control" id="calle" name="calle"  required="" >
                     <div class="invalid-feedback"> Escriba la calle correctamente. </div>
                 </div>
                 <div class="row"  *ngIf="!chequeoDireccion">
                     <div class="col-md-4 mb-3">
                         <label for="zip">Altura</label>
-                        <input type="text" class="form-control" id="zip"   name="altura" placeholder="" carequired=""  value="2349">
+                        <input type="text" class="form-control" id="zip"   name="altura" placeholder="" carequired="" >
                         <div class="invalid-feedback"> Altura es requerida. </div>
                     </div>
                     <div class="col-md-4 mb-3">
@@ -68,15 +92,17 @@
                 </div>
                 <div class="mb-3"  *ngIf="!chequeoDireccion">
                     <label for="address">Localidad</label>
-                    <input type="text" class="form-control" id="localidad"   name="localidad"  required=""  value="Villa Urquiza">
+                    <input type="text" class="form-control" id="localidad"   name="localidad"  required="" >
                     <div class="invalid-feedback"> Escriba la localidad correctamente. </div>
                 </div>
                 <div class="mb-3"  *ngIf="!chequeoDireccion">
                     <label for="address">Provicia</label>
-                    <input type="text" class="form-control" id="provincia"   name="provincia" required="" value="CABA">
+                    <input type="text" class="form-control" id="provincia"   name="provincia" required="" >
                     <div class="invalid-feedback"> Escriba la provincia correctamente. </div>
                 </div>
                 <hr class="mb-4" *ngIf="direccion">
+                <!-- Si la direccion de envio es la misma que la que tengo registrada en mi perfil, entonces -->
+                <!-- If the shipping address is the same as the one I have registered in my profile, then -->
                 <div class="custom-control custom-checkbox" *ngIf="direccion">
                     <input type="checkbox" class="custom-control-input" id="existeDireccion" name="direccion" [value]="direccion.id"  (click)="deshabilitarDireccion($event)">
                     <label class="custom-control-label" for="existeDireccion">Quiero que me envien el pedido a mi direccion de registro</label>
@@ -91,30 +117,34 @@
                 <hr class="mb-4">
                 <h4 class="mb-3">Metodo de pago</h4>
                 <div class="d-block my-3">
+                   <!-- En este caso itera todos los medios de pago del vendedor asociados al carrito existente -->
+                     <!-- In this case it iterates all the payment methods of the seller associated with the existing cart -->  
                     <app-item-pago *ngFor="let medioDePago of mediosDePago" [pago]="medioDePago" (cambioDePago) = "cambiarEstadoPago( $event )"></app-item-pago>
                 </div>
-                <div class="row" *ngIf="!chequeoEfectivo">
+                <!-- Si el medio de pago seleccionado es tarjeta entonces se despliega un formulario para completar la tarjeta. -->
+                <!-- If the selected payment method is card then a form is displayed to complete the card. -->
+                <div class="row" *ngIf="!chequeoPago">
                     <div class="col-md-6 mb-3">
                         <label for="cc-name">Nombre de la tarjeta</label>
-                        <input type="text" class="form-control" id="cc-name" placeholder="" required=""  value="Juan Castrogiovanni">
+                        <input type="text" class="form-control" id="cc-name" placeholder="" required=""  >
                         <small class="text-muted">El mismo que figura en el dorso de la misma</small>
                         <div class="invalid-feedback"> El nombre es requerido</div>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="cc-number">Numero de la tarjeta</label>
-                        <input type="text" class="form-control" id="cc-number" placeholder="" required=""  value="45987895636525489658">
+                        <input type="text" class="form-control" id="cc-number" placeholder="" required=""  >
                         <div class="invalid-feedback"> El numero es requerido </div>
                     </div>
                 </div>
-                <div class="row" *ngIf="!chequeoEfectivo">
+                <div class="row" *ngIf="!chequeoPago">
                     <div class="col-md-4 mb-3">
                         <label for="cc-expiration">Fecha de vencimiento  </label><span>(MM/AA)</span>
-                        <input type="text" class="form-control" id="cc-expiration" placeholder="" required=""  value="06/25">
+                        <input type="text" class="form-control" id="cc-expiration" placeholder="" required="" >
                         <div class="invalid-feedback"> Fecha recomendada </div>
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="cc-cvv">CVV</label>
-                        <input type="password" class="form-control" id="cc-cvv" placeholder="" required="" value="347">
+                        <input type="password" class="form-control" id="cc-cvv" placeholder="" required="" >
                         <div class="invalid-feedback"> Codigo obligatorio </div>
                     </div>
                 </div>

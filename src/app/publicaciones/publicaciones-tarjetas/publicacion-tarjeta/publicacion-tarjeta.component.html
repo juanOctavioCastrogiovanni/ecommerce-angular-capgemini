@@ -1,4 +1,5 @@
-
+<!-- Renderizado de las tarjetas de las publicaciones -->
+<!-- Rendering of the cards of the publications -->
     <div class="card-sl">
         <div [routerLink]="[ publicaciones?.id]" routerLinkActive="router-link-active" class=" cursor" style="background: white;">
             <div class="card-image">
@@ -22,5 +23,8 @@
             </div>
             </div>
         </div>
+        <!-- Cada vez que selecciono el boton añadir carrito se ejecuta el metodo agregarAlCarrito() de publicaciones.component.ts -->
+        <!-- Each time I select the add to cart button the agregarAlCarrito() method of publicaciones.component.ts is executed -->  
+
         <a class="card-button cursor" (click)="agregarAlCarrito(publicaciones?.id)"> Añadir al carrito</a>
     </div>

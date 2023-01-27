@@ -11,6 +11,7 @@ import { PublicacionesComponent } from './publicaciones/publicaciones.component'
 
 const routes: Routes = [
   
+  // Genero todo el sistema de rutas y rutas hijas a lo largo de la aplicacion para que sea mas facil de entender y de mantener
   {path: '', redirectTo: 'publicaciones', pathMatch: 'full'},
   {path: 'publicaciones',component: PublicacionesComponent},
   {path: 'publicaciones/:id',component: PublicacionComponent},

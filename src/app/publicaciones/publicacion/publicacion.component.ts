@@ -11,10 +11,13 @@ import Swal from 'sweetalert2';
 export class PublicacionComponent {
   publicacionDetalle: Publicacion | undefined;
 
+    // Se inyecta el servicio de publicaciones y el servicio de carrito
+    // The publications service and the cart service are injected
     constructor(private publicacionServicio: PublicacionesService, private carritoServicio:CarritoService) { }
 
     
-
+    // Se obtiene el id de la publicacion desde la url y se hace una peticion al servicio de publicaciones para obtener la publicacion con ese id
+    // The publication id is obtained from the url and a request is made to the publications service to obtain the publication with that id
     ngOnInit(): void {
       
       const url = window.location.href;

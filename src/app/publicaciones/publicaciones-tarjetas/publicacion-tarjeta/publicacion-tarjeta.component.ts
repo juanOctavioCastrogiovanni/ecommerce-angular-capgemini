@@ -10,10 +10,14 @@ import { PublicacionesService } from '../../servicios/publicaciones.service';
 })
 export class PublicacionTarjetaComponent {
 
+  // <!-- Para esto se usa el decorador @Input() publicaciones: Publicacion; en el componente publicacion-tarjeta.component.ts -->
+  // <!-- En el componente publicaciones-tarjetas.component.html se usa el selector <app-publicacion-tarjeta [publicaciones]="publicacion" *ngFor="let publicacion of publicaciones"></app-publicacion-tarjeta> -->
   @Input() publicaciones: Publicacion | undefined;
 
   constructor(private carritoServicio:CarritoService, private publicacionServicio: PublicacionesService) { }
 
+  // Este metodo llama al metodo sumarAlCarrito(idDeLaPublicacion) dentro del servicio del carrito
+  // this method calls the sumarAlCarrito(idDeLaPublicacion) method within the cart service
   agregarAlCarrito(id: number | undefined){
     this.carritoServicio.sumarAlCarrito(id);
   }

@@ -13,6 +13,7 @@ import { ItemPagoComponent } from './finalizar-compra/item-pago/item-pago.compon
 
 
 @NgModule({
+    // Todos los componentes que se van a utilizar dentro de carritosComponent y finalizarComponent
     declarations: [
     CarritoComponent,
     FinalizarCompraComponent,
@@ -22,6 +23,7 @@ import { ItemPagoComponent } from './finalizar-compra/item-pago/item-pago.compon
     CarritosComponent,
     ItemSubcarritoComponent
   ],
+  // Importo routerModules para las redirecciones
     imports: [
         CommonModule,
         RouterModule

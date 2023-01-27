@@ -1,13 +1,19 @@
 
+<!-- Renderiza la vista del header -->
+<!-- Renders the header view -->
 <header>
     <div class="container flex" id="header1">
       <div>
           <img src="assets/imagenes/1.jpg" alt="logo" class="img-fluid" id="logo">
       </div>
       <div class="flex carrito-contenedor">
+        <!-- Si esta logueado aparece un boton con el nombre del usuario -->
+        <!-- If logged in, a button with the user name appears -->
           <div class="nombreUsuario cursor" [routerLink]="['clientes', usuarioId, 'carritos']" routerLinkActive="router-link-active"  *ngIf="usuario!=''"  style="padding-right: 10px;">
             <p><strong>{{usuario}}</strong></p>
           </div>
+          <!-- Siempre se ejecuta la funcion cerrarSesion, este logueado o no, cerrarSesion verifica el estado y cambia el color -->
+          <!-- The cerrarSesion function is always executed, whether logged in or not, cerrarSesion verifies the state and changes the color -->
           <div routerLink="clientes/iniciar-sesion" class="cursor">
               <i class="fa-solid fa-lg fa-user" [style]="color" (click)="cerrarSesion()"></i>
           </div>
@@ -32,6 +38,8 @@
             </li>
           </ul>
           <div class="form-inline my-2 my-lg-0">
+            <!-- Ejecuto la busqueda pasandole el evento  -->
+            <!-- I execute the search by passing the event -->
             <input class="form-control mr-sm-2" type="search" (keyup.enter)="buscar( $event )" #txtBuscar aria-label="Search">
           </div>
         </div>

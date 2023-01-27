@@ -1,3 +1,5 @@
+<!-- Renderizado del componente de la pagina del carrito -->
+<!-- Rendered component of the cart page -->
 <section class="my-3" style="background-color: #eee;">
   <div class="container ">
     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -7,10 +9,13 @@
           <h3 class="fw-normal mb-0 text-black">Carrito</h3>
          
         </div>
-
+        <!-- Si hay items en el carrito los mostrara renderizando el componente carrito-item iterando todos los items -->
+        <!-- If there are items in the cart, they will be shown by rendering the carrito-item component iterating all the items -->
         <div class="card rounded-3 mb-4 sombra" *ngIf="carrito?.items?.length! > 0; else seleccionado">
           <app-carrito-item [item]="itemProducto" *ngFor="let itemProducto of carrito?.items"></app-carrito-item>
         </div>
+        <!-- En el caso de que no haya items en el carrito -->
+        <!-- In the case that there are no items in the cart -->
         <ng-template #seleccionado>
           <div class="container">
                   <div class="row" style="height: 300px; background-color: rgb(223, 223, 223);">
@@ -21,7 +26,8 @@
           </div>
       </ng-template>
         
-        
+        <!-- Precio total -->
+        <!-- Total price -->
         <div class="card mb-4">
           <div class="card-body p-4 d-flex justify-content-between text-success">
             <h2>Precio total:</h2>
@@ -29,6 +35,8 @@
           </div>
         </div>
 
+        <!-- Boton para confirmar la compra, solo esta activo si hay items -->
+        <!-- Button to confirm the purchase, only active if there are items -->
         <div class="card" *ngIf="carrito?.items?.length! > 0">
           <div class="card-body">
                 <button type="button" class="btn btn-filtro-activo btn-block btn-lg" routerLink="finalizar-compra" routerLinkActive="router-link-active" >Confirmar

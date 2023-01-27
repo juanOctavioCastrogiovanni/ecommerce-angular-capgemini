@@ -12,7 +12,6 @@ import { PublicacionesModule } from './publicaciones/publicaciones.module';
 import { AuthModule } from './auth/auth.module';
 import { CompartidoModule } from './compartido/compartido.module';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
-import { ItemPagoComponent } from './compra/item-pago/item-pago.component';
 import { CompraModule } from './compra/compra.module';
 
 
@@ -23,6 +22,7 @@ import { CompraModule } from './compra/compra.module';
   declarations: [
     AppComponent
   ],
+  // Importaciones de todos los modulos que se van a utilizar a lo largo de la aplicacion
   imports: [
     CompraModule,
     BrowserModule,
